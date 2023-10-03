@@ -3,7 +3,7 @@ package com.lcwd.blog.service;
 import java.util.List;
 
 import com.lcwd.blog.payload.PostDto;
-import com.lcwd.blog.payload.PostResponse;
+
 
 public interface PostServiceI {
 
@@ -26,6 +26,6 @@ public interface PostServiceI {
 
 	List<PostDto> searchPost(String keyword);
 
-	PostResponse getAllPosts(Integer pageNumber, Integer pageSize,String sortBy);
+
 
 }

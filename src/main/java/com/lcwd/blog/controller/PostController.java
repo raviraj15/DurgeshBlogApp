@@ -2,6 +2,7 @@ package com.lcwd.blog.controller;
 
 import java.util.List;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lcwd.blog.config.AppContants;
+
 import com.lcwd.blog.payload.ApiResponse;
 import com.lcwd.blog.payload.CategoryDto;
 import com.lcwd.blog.payload.PostDto;
-import com.lcwd.blog.payload.PostResponse;
+
 import com.lcwd.blog.payload.UserDto;
 import com.lcwd.blog.service.PostServiceI;
 
@@ -73,14 +74,20 @@ public class PostController {
 		return new ResponseEntity<PostDto>(postById, HttpStatus.OK);
 	}
 
-	@GetMapping("/getAllPosts")
-	public ResponseEntity<PostResponse> getAll(
-			@RequestParam(value = "pageNumber", defaultValue = AppContants.pageNumber, required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = AppContants.pageSize, required = false) Integer pageSize,
-			@RequestParam(value = "sortBy", defaultValue = AppContants.sortBy, required = false) String sortBy) {
-		PostResponse allPosts = service.getAllPosts(pageNumber, (Integer) pageSize, sortBy);
-		return new ResponseEntity<PostResponse>(allPosts, HttpStatus.OK);
-	}
+	/*
+	 * @GetMapping("/getAllPosts") public ResponseEntity<PostResponse> getAll(
+	 * 
+	 * @RequestParam(value = "pageNumber", defaultValue = AppContants.pageNumber,
+	 * required = false) Integer pageNumber,
+	 * 
+	 * @RequestParam(value = "pageSize", defaultValue = AppContants.pageSize,
+	 * required = false) Integer pageSize,
+	 * 
+	 * @RequestParam(value = "sortBy", defaultValue = AppContants.sortBy, required =
+	 * false) String sortBy) { PostResponse allPosts =
+	 * service.getAllPosts(pageNumber, (Integer) pageSize, sortBy); return new
+	 * ResponseEntity<PostResponse>(allPosts, HttpStatus.OK); }
+	 */
 
 	@GetMapping("post/search/{keyword}")
 	public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable String keyword) {

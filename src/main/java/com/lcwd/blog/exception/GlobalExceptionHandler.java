@@ -24,15 +24,15 @@ public class GlobalExceptionHandler {
 
 	}
 
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<Map<String, String>> methodArsNotValidHandler(MethodArgumentNotValidException ex) {
-		HashMap<String, String> response = new HashMap<>();
-		ex.getBindingResult().getAllErrors().forEach((error) -> {
-			String fieldName = ((FieldError) error).getField();
-			String message = error.getDefaultMessage();
-			response.put(fieldName, message);
-
-		});
-		return new ResponseEntity<Map<String, String>>(response, HttpStatus.BAD_REQUEST);
-	}
+//	@ExceptionHandler(MethodArgumentNotValidException.class)
+//	public ResponseEntity<Map<String, String>> methodArsNotValidHandler(MethodArgumentNotValidException ex) {
+//		HashMap<String, String> response = new HashMap<>();
+//		ex.getBindingResult().getAllErrors().forEach((error) -> {
+//			String fieldName = ((FieldError) error).getField();
+//			String message = error.getDefaultMessage();
+//			response.put(fieldName, message);
+//
+//		});
+//		return new ResponseEntity<Map<String, String>>(response, HttpStatus.BAD_REQUEST);
+//	}
 }

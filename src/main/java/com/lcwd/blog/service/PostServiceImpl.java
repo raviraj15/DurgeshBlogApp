@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.lcwd.blog.payload.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,7 @@ import com.lcwd.blog.entity.User;
 import com.lcwd.blog.exception.ResourceNotFoundException;
 import com.lcwd.blog.payload.CategoryDto;
 import com.lcwd.blog.payload.PostDto;
-import com.lcwd.blog.payload.PostResponse;
+
 import com.lcwd.blog.repository.CategoryRepo;
 import com.lcwd.blog.repository.PostRepo;
 import com.lcwd.blog.repository.UserRepo;
@@ -74,22 +75,13 @@ public class PostServiceImpl implements PostServiceI {
 		return map;
 	}
 
-	public PostResponse getAllPosts(Integer pageNumber, Integer pageSize, String sortBy) {
+	public List<PostDto> getAllPosts() {
 
-		PageRequest of = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy).descending());
+		List<Post> all = repo.findAll();
 
-		Page<Post> findAll = repo.findAll(of);
-		List<Post> content = findAll.getContent();
-		List<PostDto> collect = content.stream().map(post -> mapper.map(post, PostDto.class))
-				.collect(Collectors.toList());
-		PostResponse postResponse = new PostResponse();
-		postResponse.setContent(collect);
-		postResponse.setPageNumber(findAll.getNumber());
-		postResponse.setPageSize(findAll.getSize());
-		postResponse.setTotalElement(findAll.getTotalElements());
-		postResponse.setTotalPages(findAll.getTotalPages());
-		postResponse.setLastpage(findAll.isLast());
-		return postResponse;
+		List<PostDto> collect = all.stream().map(u -> mapper.map(u, PostDto.class)).collect(Collectors.toList());
+
+		return collect;
 	}
 
 	@Override

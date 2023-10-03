@@ -3,6 +3,7 @@ package com.lcwd.blog.controller;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,13 @@ public class UserController {
 
 	@Autowired
 	private UserServiceI service;
+	
+	 @PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("/welcome")
+    public String welcome() {
+        return "Welcome this endpoint is blog";
+    }
+
 
 	@PostMapping("/addUser")
 	public ResponseEntity<UserDto> addUser(@javax.validation.Valid @RequestBody UserDto userDto) {

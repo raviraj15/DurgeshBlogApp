@@ -31,23 +31,21 @@ public class UserServiceImpl implements UserServiceI {
 		return user;
 	}
 
-	@Override
-	public UserDto updateUser(Integer userId, UserDto userDto) {
-
-		User ExistingUser = repo.findById(userId)
-				.orElseThrow(() -> new ResourceNotFoundException("user not found with given id " + userId));
-
-		ExistingUser.setAbout(userDto.getAbout());
-		ExistingUser.setEmail(userDto.getEmail());
-		ExistingUser.setName(userDto.getName());
-		ExistingUser.setPassword(userDto.getPassword());
-
-		User save = repo.save(ExistingUser);
-
-		UserDto map = mapper.map(save, UserDto.class);
-		return map;
-	}
-
+	/*
+	 * @Override public UserDto updateUser(Integer userId, UserDto userDto) {
+	 * 
+	 * User ExistingUser = repo.findById(userId) .orElseThrow(() -> new
+	 * ResourceNotFoundException("user not found with given id " + userId));
+	 * 
+	 * ExistingUser.setAbout(userDto.getAbout());
+	 * ExistingUser.setEmail(userDto.getEmail());
+	 * ExistingUser.setName(userDto.getName());
+	 * ExistingUser.setPassword(userDto.getPassword());
+	 * 
+	 * User save = repo.save(ExistingUser);
+	 * 
+	 * UserDto map = mapper.map(save, UserDto.class); return map; }
+	 */
 	@Override
 	public UserDto getUserById(Integer userId) {
 
@@ -75,6 +73,12 @@ public class UserServiceImpl implements UserServiceI {
 
 		repo.delete(ExistingUser);
 
+	}
+
+	@Override
+	public UserDto updateUser(Integer userId, UserDto userDto) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

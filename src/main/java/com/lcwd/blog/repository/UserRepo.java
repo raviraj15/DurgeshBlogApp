@@ -9,6 +9,7 @@ import com.lcwd.blog.entity.User;
 
 public interface UserRepo extends JpaRepository<User, Integer>{
 	
-	Optional<User> findByEmail(String username);
+	//Optional<User> findByEmail(String username);
+	User findByName(String username);
 
 }
