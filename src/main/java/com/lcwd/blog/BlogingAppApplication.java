@@ -15,7 +15,7 @@ import com.lcwd.blog.entity.User;
 
 @SpringBootApplication
 public class BlogingAppApplication {
-
+//this is developer  
 
 	public static void main(String[] args) {
 		SpringApplication.run(BlogingAppApplication.class, args);
