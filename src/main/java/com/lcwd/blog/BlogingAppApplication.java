@@ -20,6 +20,8 @@ public class BlogingAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BlogingAppApplication.class, args);
 
+		System.out.println("this is master branch code");
+
 	}
 
 
@@ -30,5 +32,5 @@ public class BlogingAppApplication {
 }
 
 
-	
+
 
